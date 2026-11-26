@@ -61,6 +61,13 @@ public final class InferenceResult {
         return firedRules;
     }
 
+    InferenceResult withLeadingTrace(List<TraceStep> leading) {
+        List<TraceStep> merged = new ArrayList<>(leading);
+        merged.addAll(trace);
+
+        return new InferenceResult(goal, facts, derivedFacts, justifications, merged, firedRules);
+    }
+
     /**
      * Builds a "how" explanation: the derivation tree of {@code fact} down to the initial facts.
      */
