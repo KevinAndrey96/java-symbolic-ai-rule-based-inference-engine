@@ -1,6 +1,7 @@
 package io.github.kevinandrey96.inference.engine;
 
 import io.github.kevinandrey96.inference.model.Rule;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -28,6 +29,11 @@ public enum ConflictResolutionStrategy {
 
             return best;
         }
+
+        @Override
+        public Comparator<Rule> backwardOrder() {
+            return Comparator.comparingInt(Rule::getPremiseCount).reversed();
+        }
     };
 
     private final String description;
@@ -44,4 +50,12 @@ public enum ConflictResolutionStrategy {
      * Picks the rule to fire. {@code conflictSet} must not be empty.
      */
     public abstract Rule select(List<Rule> conflictSet);
+
+    /**
+     * Order in which backward chaining tries the rules that conclude the same goal. The sort is
+     * stable, so rules with the same key keep their declaration order.
+     */
+    public Comparator<Rule> backwardOrder() {
+        return (a, b) -> 0;
+    }
 }
