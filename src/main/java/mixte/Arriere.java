@@ -112,13 +112,6 @@ public class Arriere extends JFrame{
                          trace= trace+ "\n The goal "+but.getText()+" was not found";
                     }
                     txt.setText(trace);
-                           PrintStream out;
-                try {
-                    out = new PrintStream(new FileOutputStream("C:\\Users\\chaima\\Downloads\\log.txt", true));
-                      out.append("\n *********** New Chaining ********** \n"+trace);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Arriere.class.getName()).log(Level.SEVERE, null, ex);
-                }
                     but.setText("");
                     
                     }
@@ -139,13 +132,6 @@ public class Arriere extends JFrame{
                          trace= trace+ "\n The goal "+but2.getText()+" was not found";
                     }
                     txt.setText(trace);
-                           PrintStream out;
-                try {
-                    out = new PrintStream(new FileOutputStream("C:\\Users\\chaima\\Downloads\\log.txt", true));
-                      out.append("\n *********** New chaining ********** \n"+trace);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Arriere.class.getName()).log(Level.SEVERE, null, ex);
-                }
                     but2.setText("");
                     
                     }
