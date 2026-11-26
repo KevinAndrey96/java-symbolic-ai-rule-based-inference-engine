@@ -1,0 +1,21 @@
+# Animal identification, after the ZOOKEEPER system from Patrick H. Winston,
+# "Artificial Intelligence" (3rd ed., 1992), expressed as propositional Horn clauses.
+
+has_hair => mammal
+gives_milk => mammal
+has_feathers => bird
+flies, lays_eggs => bird
+
+mammal, eats_meat => carnivore
+mammal, has_pointed_teeth, has_claws, has_forward_eyes => carnivore
+mammal, has_hoofs => ungulate
+mammal, chews_cud => ungulate
+
+carnivore, has_tawny_color, has_dark_spots => cheetah
+carnivore, has_tawny_color, has_black_stripes => tiger
+ungulate, has_long_neck, has_long_legs, has_dark_spots => giraffe
+ungulate, has_white_color, has_black_stripes => zebra
+
+bird, does_not_fly, has_long_neck, has_long_legs, is_black_and_white => ostrich
+bird, does_not_fly, swims, is_black_and_white => penguin
+bird, flies_well => albatross

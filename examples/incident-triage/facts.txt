@@ -1,0 +1,2 @@
+# Signals collected from monitoring during an outage
+http_5xx_spike, error_rate_above_slo, recent_deploy, db_cpu_normal

@@ -1,0 +1,19 @@
+# Production incident triage runbook encoded as rules (AIOps style decision support)
+
+http_5xx_spike, error_rate_above_slo => incident_active
+latency_p99_above_slo, error_rate_above_slo => incident_active
+
+incident_active, recent_deploy => deploy_suspected
+deploy_suspected, db_cpu_normal => application_regression
+application_regression => rollback_release
+
+incident_active, db_cpu_high, slow_queries => database_bottleneck
+database_bottleneck => scale_database_read_replicas
+
+incident_active, certificate_expired => tls_failure
+tls_failure => renew_certificate
+
+incident_active, queue_backlog_growing => consumer_starvation
+consumer_starvation => scale_consumers
+
+rollback_release, incident_active => page_on_call_engineer
